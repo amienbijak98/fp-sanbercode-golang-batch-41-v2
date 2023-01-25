@@ -11,6 +11,8 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+var AdminLoggedIn int
+
 func HashPassword(password string) (string, error) {
 	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
 	return string(bytes), err
@@ -30,7 +32,7 @@ func Register(db *sql.DB, admin models.UserAdmin) (err error) {
 	return errs.Err()
 }
 
-func Login(db *sql.DB, admin models.UserAdmin) (error, interface{}) {
+func Login(db *sql.DB, admin models.UserAdmin) (interface{}, error) {
 	sqlStatement := "SELECT id, username, password FROM user_admin WHERE username = $1"
 	row := db.QueryRow(sqlStatement, admin.UserName)
 
@@ -42,12 +44,12 @@ func Login(db *sql.DB, admin models.UserAdmin) (error, interface{}) {
 
 	err := row.Scan(&storedUser.ID, &storedUser.Username, &storedUser.Password)
 	if err != nil {
-		return err, nil
+		return nil, err
 	}
 
 	match := CheckPasswordHash(admin.Password, storedUser.Password)
 	if !match {
-		return errors.New("password is incorrect"), nil
+		return nil, errors.New("password is incorrect")
 	}
 
 	sqlStatement = "DELETE FROM user_credentials WHERE admin_id = $1"
@@ -55,23 +57,27 @@ func Login(db *sql.DB, admin models.UserAdmin) (error, interface{}) {
 
 	uuid := uuid.New()
 
-	sqlStatement = "INSERT INTO user_credentials (admin_id, uuid) VALUES ($1, $2)"
+	sqlStatement = "INSERT INTO user_credentials (admin_id, uuid) VALUES ($1, $2) RETURNING admin_id"
 	insertRow := db.QueryRow(sqlStatement, storedUser.ID, uuid)
 	if insertRow.Err() != nil {
-		return errors.New("failed to insert user credentials"), nil
+		return nil, errors.New("failed to insert user credentials")
 	}
+
+	AdminLoggedIn = storedUser.ID
 
 	token, err := middleware.GenerateToken(storedUser.ID, uuid.String())
 	if err != nil {
-		return errors.New("failed to login"), nil
+		return nil, errors.New("failed to login")
 	}
 
-	return nil, token
+	return token, nil
 }
 
 func Logout(db *sql.DB, uuid string) error {
 	sqlStatement := "DELETE FROM user_credentials WHERE uuid = $1"
 	err := db.QueryRow(sqlStatement, uuid)
+
+	AdminLoggedIn = 0
 
 	return err.Err()
 }

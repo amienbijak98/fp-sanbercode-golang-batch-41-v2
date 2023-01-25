@@ -49,7 +49,7 @@ func GetPatientByID(db *sql.DB, id int) (models.Patient, error) {
 }
 
 func InsertPatient(db *sql.DB, patient models.Patient) error {
-	patient.CreatedBy = 1
+	patient.CreatedBy = AdminLoggedIn
 
 	now := time.Now()
 	timeString := now.Format(time.RFC3339)
@@ -65,7 +65,8 @@ func InsertPatient(db *sql.DB, patient models.Patient) error {
 }
 
 func UpdatePatient(db *sql.DB, patient models.Patient) error {
-	patient.CreatedBy = 1
+	patient.UpdatedBy = new(int)
+	*patient.UpdatedBy = AdminLoggedIn
 
 	now := time.Now()
 	// Format time into ISO8601 format

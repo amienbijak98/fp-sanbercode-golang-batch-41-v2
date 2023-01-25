@@ -34,7 +34,7 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	err, token := repository.Login(database.DbConnection, admin)
+	token, err := repository.Login(database.DbConnection, admin)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
