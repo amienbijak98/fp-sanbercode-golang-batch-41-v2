@@ -41,7 +41,6 @@ func UpdateDoctor(db *sql.DB, doctor models.Doctor) error {
 	return nil
 }
 
-// DeleteDoctor deletes an existing doctor from the database
 func DeleteDoctor(db *sql.DB, id int) error {
 	query := `DELETE FROM doctors WHERE id = $1`
 

@@ -34,6 +34,19 @@ func StartServer() *gin.Engine {
 		public.PUT("/doctors/:id", controllers.UpdateDoctor)
 		public.DELETE("/doctors/:id", controllers.DeleteDoctor)
 
+		// ROUTERS FOR DEPARTEMENTS
+		public.GET("/departements", controllers.GetAllDepartements)
+		public.GET("/departements/:id", controllers.GetDepartementByID)
+		public.POST("/departements", controllers.InsertDepartement)
+		public.PUT("/departements/:id", controllers.UpdateDepartement)
+		public.DELETE("/departements/:id", controllers.DeleteDepartement)
+
+		// ROUTERS FOR APPOINTMENTS
+		public.GET("/appointments", controllers.GetAllAppointments)
+		public.GET("/appointments/:id", controllers.GetAppointmentByID)
+		public.POST("/appointments", controllers.InsertAppointment)
+		public.PUT("/appointments/:id", controllers.UpdateAppointment)
+		public.DELETE("/appointments/:id", controllers.DeleteAppointment)
 	}
 
 	return router
