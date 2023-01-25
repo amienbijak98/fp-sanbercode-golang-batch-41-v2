@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/joho/godotenv"
+	_ "github.com/lib/pq"
 	"github.com/wisedevguy/fp-sanbercode-golang-batch-41-v2/database"
 	"github.com/wisedevguy/fp-sanbercode-golang-batch-41-v2/routers"
 )

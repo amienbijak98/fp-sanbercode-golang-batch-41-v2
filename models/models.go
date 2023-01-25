@@ -3,16 +3,16 @@ package models
 import "time"
 
 type Patient struct {
-	ID             int       `json:"id"`
-	Name           string    `json:"name"`
-	Gender         string    `json:"gender"`
-	BirthDate      time.Time `json:"birth_date"`
-	MobileNumber   string    `json:"mobile_number"`
-	MedicalHistory string    `json:"medical_history"`
-	CreatedBy      int       `json:"created_by"`
-	UpdatedBy      int       `json:"updated_by,omitempty"`
-	CreatedAt      time.Time `json:"created_at"`
-	UpdatedAt      time.Time `json:"updated_at,omitempty"`
+	ID             int        `json:"id"`
+	Name           string     `json:"name"`
+	Gender         string     `json:"gender"`
+	BirthDate      time.Time  `json:"birth_date"`
+	MobileNumber   string     `json:"mobile_number"`
+	MedicalHistory string     `json:"medical_history"`
+	CreatedBy      int        `json:"created_by"`
+	UpdatedBy      *int       `json:"updated_by,omitempty"`
+	CreatedAt      time.Time  `json:"created_at"`
+	UpdatedAt      *time.Time `json:"updated_at,omitempty"`
 }
 
 type Doctor struct {
