@@ -16,48 +16,48 @@ type Patient struct {
 }
 
 type Doctor struct {
-	ID             int       `json:"id"`
-	Name           string    `json:"name"`
-	MobileNumber   string    `json:"mobile_number"`
-	Qualifications string    `json:"qualifications"`
-	DepartementID  int       `json:"departement_id"`
-	CreatedBy      int       `json:"created_by"`
-	UpdatedBy      int       `json:"updated_by,omitempty"`
-	CreatedAt      time.Time `json:"created_at"`
-	UpdatedAt      time.Time `json:"updated_at,omitempty"`
+	ID             int        `json:"id"`
+	Name           string     `json:"name"`
+	MobileNumber   string     `json:"mobile_number"`
+	Qualifications string     `json:"qualifications"`
+	DepartementID  int        `json:"departement_id"`
+	CreatedBy      int        `json:"created_by"`
+	UpdatedBy      *int       `json:"updated_by,omitempty"`
+	CreatedAt      time.Time  `json:"created_at"`
+	UpdatedAt      *time.Time `json:"updated_at,omitempty"`
 }
 
 type Departement struct {
-	ID              int       `json:"id"`
-	DepartementName string    `json:"departement_name"`
-	Location        string    `json:"location"`
-	CreatedBy       int       `json:"created_by"`
-	UpdatedBy       int       `json:"updated_by,omitempty"`
-	CreatedAt       time.Time `json:"created_at"`
-	UpdatedAt       time.Time `json:"updated_at,omitempty"`
+	ID              int        `json:"id"`
+	DepartementName string     `json:"departement_name"`
+	Location        string     `json:"location"`
+	CreatedBy       int        `json:"created_by"`
+	UpdatedBy       *int       `json:"updated_by,omitempty"`
+	CreatedAt       time.Time  `json:"created_at"`
+	UpdatedAt       *time.Time `json:"updated_at,omitempty"`
 }
 
 type Appointment struct {
-	ID            int       `json:"id"`
-	AppoSchedule  time.Time `json:"appo_schedule"`
-	Descriptions  string    `json:"descriptions"`
-	PatientID     int       `json:"patient_id"`
-	DoctorsID     int       `json:"doctors_id"`
-	DepartementID int       `json:"departement_id"`
-	CreatedBy     int       `json:"created_by"`
-	UpdatedBy     int       `json:"updated_by,omitempty"`
-	CreatedAt     time.Time `json:"created_at"`
-	UpdatedAt     time.Time `json:"updated_at,omitempty"`
+	ID            int        `json:"id"`
+	AppoSchedule  time.Time  `json:"appo_schedule"`
+	Descriptions  string     `json:"descriptions"`
+	PatientID     int        `json:"patient_id"`
+	DoctorsID     int        `json:"doctors_id"`
+	DepartementID int        `json:"departement_id"`
+	CreatedBy     int        `json:"created_by"`
+	UpdatedBy     *int       `json:"updated_by,omitempty"`
+	CreatedAt     time.Time  `json:"created_at"`
+	UpdatedAt     *time.Time `json:"updated_at,omitempty"`
 }
 
 type UserAdmin struct {
-	ID        int       `json:"id"`
-	UserName  string    `json:"username"`
-	Password  string    `json:"password"`
-	Name      string    `json:"name,omitempty"`
-	Role      string    `json:"role,omitempty"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt time.Time `json:"updated_at,omitempty"`
+	ID        int        `json:"id"`
+	UserName  string     `json:"username"`
+	Password  string     `json:"password"`
+	Name      string     `json:"name,omitempty"`
+	Role      string     `json:"role,omitempty"`
+	CreatedAt time.Time  `json:"created_at"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 }
 
 type UserCredentials struct {
