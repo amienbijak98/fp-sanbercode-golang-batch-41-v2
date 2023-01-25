@@ -17,7 +17,8 @@ var (
 )
 
 func main() {
-	err = godotenv.Load("config/.env")
+	//err = godotenv.Load("config/local.env")
+	err = godotenv.Load("config/deploy.env")
 	if err != nil {
 		fmt.Println("FAILED load file environment")
 	} else {
@@ -39,6 +40,7 @@ func main() {
 
 	defer DB.Close()
 
-	routers.StartServer().Run(":8080")
+	//routers.StartServer().Run(":8080")
+	routers.StartServer().Run()
 
 }
