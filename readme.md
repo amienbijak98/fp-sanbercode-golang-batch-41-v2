@@ -30,7 +30,7 @@ This is a simple hospital reservation system built using the Gin framework and P
 #### Patients Endpoints
 
 - `GET /api/v1/patients`: Retrieve all patient data
-- `GET /api/v1/patients/`:id: Retrieve patient data by ID
+- `GET /api/v1/patients/:id`: Retrieve patient data by ID
 - `POST /api/v1/patients`: Insert patient data
 - `PUT /api/v1/patients/:id`: Update patient data by ID
 - `DELETE /api/v1/patients/:id`: Delete patient data by ID
