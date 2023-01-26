@@ -60,5 +60,5 @@ This is a simple hospital reservation system built using the Gin framework and P
 - `DELETE /api/v1/appointments/:id`: Delete appointment data by ID
 
 ## Miscellaneous Links
-`https://docs.google.com/presentation/d/1Id3tfO_fND_jRXOV4QCXPRpqODhUWeI-9gYt3I15v04/edit?usp=sharing` : Google Slide Presentation
-`https://fp-sanbercode-golang-batch-41-v2-production.up.railway.app/` : Railway Deployment Link
+- `https://docs.google.com/presentation/d/1Id3tfO_fND_jRXOV4QCXPRpqODhUWeI-9gYt3I15v04/edit?usp=sharing` : Google Slide Presentation
+- `https://fp-sanbercode-golang-batch-41-v2-production.up.railway.app/` : Railway Deployment Link
