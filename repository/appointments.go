@@ -29,6 +29,8 @@ func UpdateAppointment(db *sql.DB, appointment models.Appointment) error {
 		return errors.New("updated_by field is required")
 	}
 
+	appointment.UpdatedBy = &AdminLoggedIn
+
 	now := time.Now()
 	timeString := now.Format(time.RFC3339)
 
